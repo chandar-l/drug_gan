@@ -62,18 +62,18 @@ BATCH_SIZE = 32  # Increased from 16 - better gradient estimates for distributio
 NOISE_DIM = 384  # Increased from 256 - more input diversity to capture full ranges
 GEN_HIDDEN_DIM = 768  # Increased from 512 - more capacity to capture diversity and edge cases
 DISC_HIDDEN_DIM = 128
-EPOCHS = 500  # Training from scratch with new hyperparameters  
+EPOCHS = 800  # Training from scratch with new hyperparameters  
 
 # Training hyperparameters - optimized for better distribution matching
 GEN_LR = 5e-5  # Increased from 3e-5 - generator needs more aggressive learning to escape mode collapse
 DISC_LR = 1e-5  # Increased from 3e-6 - discriminator needs higher LR to learn effectively
 LAMBDA_GP = 10.0  # Gradient penalty weight (keep stable)
 LAMBDA_FM = 5.0  # Decreased from 15.0 - feature matching pulls to mean, causing range compression (CRITICAL)
-LAMBDA_DIV = 2.0  # Increased from 0.2 - distribution matching needs boost to match full ranges (CRITICAL)
+LAMBDA_DIV = 3.0  # Increased from 0.2 - distribution matching needs boost to match full ranges (CRITICAL)
 LAMBDA_TEMPORAL = 0.5  # Decreased from 1.0 - temporal loss may constrain diversity
 LAMBDA_ZERO_SEQ = 1.0  # Penalty weight for all-zero sequences in fake data
-TEMPORAL_SLOPE_WEIGHT = 1.0  # Weight for penalizing large slopes (first derivative)
-TEMPORAL_SLOPE_CHANGE_WEIGHT = 1.0  # Weight for penalizing large slope changes (second derivative)
+TEMPORAL_SLOPE_WEIGHT = 2.0  # Weight for penalizing large slopes (first derivative)
+TEMPORAL_SLOPE_CHANGE_WEIGHT = 2.0  # Weight for penalizing large slope changes (second derivative)
 N_CRITIC = 5  # Increased from 1 - give discriminator more training to learn effectively
 N_GEN = 5  # Increased from 3 - give generator more updates to catch up and learn full distribution
 GEN_GRAD_CLIP = 2.0  # Increased from 1.0 - allow larger gradients for generator to escape mode collapse
